@@ -76,8 +76,8 @@ module.exports = {
     module: {
       loaders: [
         { test: /\.css$/, loader: 'style!css' },
-        { test: /\.less$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss!less?outputStyle=expanded&sourceMap' },
-        { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap' }
+        { test: /\.less$/, loader: 'style!css?importLoaders=2&sourceMap&postcss!less?outputStyle=expanded&sourceMap' },
+        { test: /\.scss$/, loader: 'style!css?importLoaders=2&sourceMap&postcss!sass?outputStyle=expanded&sourceMap' }
       ]
     },
     plugins: [
@@ -103,8 +103,8 @@ module.exports = {
     module: {
       loaders: [
         { test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css') },
-        { test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!postcss!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
-        { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!postcss!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true') }
+        { test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!postcss!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
+        { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!postcss!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true') }
       ]
     },
     plugins: [
