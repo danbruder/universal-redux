@@ -19,6 +19,7 @@ const serverOptions = {
   lazy: false,
   publicPath: webpackConfig.output.publicPath,
   headers: { 'Access-Control-Allow-Origin': '*' },
+  stats: { colors: true },
   watchOptions: { poll: true }
 };
 
