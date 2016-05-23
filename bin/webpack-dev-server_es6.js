@@ -11,7 +11,7 @@ const compiler = webpack(webpackConfig);
 const host = config.server.host || 'localhost';
 const port = parseInt(config.server.port, 10) + 1 || 3001;
 const serverOptions = {
-  contentBase: "/source"
+  contentBase: "/source",
   quiet: true,
   noInfo: true,
   hot: true,
