@@ -22,7 +22,7 @@ const serverOptions = {
   stats: { colors: true },
   watchOptions: {
     aggregateTimeout: 300,
-    poll: 1000
+    poll: 3000
   },
 };
 
