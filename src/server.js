@@ -8,7 +8,7 @@ import configure from './configure';
 export default (projectConfig) => {
   const config = configure(projectConfig);
   const server = new Express();
-  server.use(compression());
+  //server.use(compression());
 
   if (config.server.favicon) {
     server.use(favicon(path.resolve(config.server.favicon)));
