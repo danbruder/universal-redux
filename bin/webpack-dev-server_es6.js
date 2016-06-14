@@ -11,7 +11,7 @@ const compiler = webpack(webpackConfig);
 const host = config.server.host || 'localhost';
 const port = parseInt(config.server.port, 10) + 1 || 3001;
 const serverOptions = {
-  contentBase: "/source",
+  contentBase: 'http://' + host + ':' + port,
   quiet: true,
   noInfo: true,
   hot: true,
@@ -19,11 +19,7 @@ const serverOptions = {
   lazy: false,
   publicPath: webpackConfig.output.publicPath,
   headers: { 'Access-Control-Allow-Origin': '*' },
-  stats: { colors: true },
-  watchOptions: {
-    aggregateTimeout: 300,
-    poll: 3000
-  },
+  stats: { colors: true }
 };
 
 const app = new Express();
