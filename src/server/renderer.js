@@ -31,7 +31,7 @@ export default (projectConfig, projectToolsConfig) => {
     const store = createStore(middleware);
     const routes = getRoutes(store);
 
-    if (__DEVELOPMENT__) {
+    if (__DISABLE_SSR__) {
       const content = html(config, tools.assets(), store, headers);
       return new Promise(resolve => send(200, content, resolve)).then(() => {
       });
