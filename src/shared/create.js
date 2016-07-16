@@ -47,7 +47,7 @@ export default function create(providedMiddleware, data) {
   let store = {}
   if (__CLIENT__) {
     const enhancer = compose(
-      ...middleware,
+      applyMiddleware(...middleware),
       persistState(),
     )
 
