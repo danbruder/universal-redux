@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router';
 import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 
 import { compose as composeDevtools, listenToRouter as linkDevtoolsToRouter } from '../client/devtools';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
 import persistState from 'redux-localstorage'
 
 // explicit path required for HMR to function. see #7
