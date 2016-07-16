@@ -55,8 +55,8 @@ export default function create(providedMiddleware, data) {
   } else {
     const finalCreateStore = useDevtools ? composeDevtools(middleware)(createStore) : applyMiddleware(...middleware)(createStore);
     store = finalCreateStore(reducers, data);
+    linkDevtoolsToRouter(router, store);
   }
-  linkDevtoolsToRouter(router, store);
 
   hmr(store);
 
