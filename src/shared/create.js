@@ -44,15 +44,16 @@ export default function create(providedMiddleware, data) {
 
   const useDevtools = __DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__;
 
+  let store = {}
   if (__CLIENT__) {
     const enhancer = compose(
       applyMiddleware(...middleware),
       persistState(),
     )
 
-    const store = createStore(reducers, data, enhancer);
+    store = createStore(reducers, data, enhancer);
   } else {
-    const store = createStore(reducers, data);
+    store = createStore(reducers, data);
   }
 
   hmr(store);
