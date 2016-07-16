@@ -44,16 +44,19 @@ export default function create(providedMiddleware, data) {
 
   const useDevtools = __DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__;
 
-  if (__CLIENT__) {
+  //let store = {}
+  //if (__CLIENT__) {
     const enhancer = compose(
       applyMiddleware(...middleware),
       persistState(),
     )
 
     const store = createStore(reducers, data, enhancer);
-  } else {
-    const store = createStore(reducers, data);
-  }
+  //} else {
+    //const finalCreateStore = useDevtools ? composeDevtools(middleware)(createStore) : applyMiddleware(...middleware)(createStore);
+    //store = finalCreateStore(reducers, data);
+    //linkDevtoolsToRouter(router, store);
+  //}
 
   hmr(store);
 
