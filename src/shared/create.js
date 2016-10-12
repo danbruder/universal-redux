@@ -7,8 +7,7 @@ import { browserHistory } from 'react-router';
 import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 
 import { compose as composeDevtools, listenToRouter as linkDevtoolsToRouter } from '../client/devtools';
-import { applyMiddleware, createStore, compose } from 'redux';
-import persistState from 'redux-localstorage'
+import { applyMiddleware, createStore } from 'redux';
 
 // explicit path required for HMR to function. see #7
 import reducers from '../../../../src/redux/modules';
@@ -43,20 +42,11 @@ export default function create(providedMiddleware, data) {
   }
 
   const useDevtools = __DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__;
+  const finalCreateStore = useDevtools ? composeDevtools(middleware)(createStore) : applyMiddleware(...middleware)(createStore);
 
-  //let store = {}
-  //if (__CLIENT__) {
-    const enhancer = compose(
-      applyMiddleware(...middleware),
-      persistState(),
-    )
+  const store = finalCreateStore(reducers, data);
 
-    const store = createStore(reducers, data, enhancer);
-  //} else {
-    //const finalCreateStore = useDevtools ? composeDevtools(middleware)(createStore) : applyMiddleware(...middleware)(createStore);
-    //store = finalCreateStore(reducers, data);
-    //linkDevtoolsToRouter(router, store);
-  //}
+  linkDevtoolsToRouter(router, store);
 
   hmr(store);
 
